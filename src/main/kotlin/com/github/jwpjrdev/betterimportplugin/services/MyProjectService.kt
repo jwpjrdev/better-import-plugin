@@ -1,7 +1,7 @@
-package org.jetbrains.plugins.template.services
+package com.github.jwpjrdev.betterimportplugin.services
 
+import com.github.jwpjrdev.betterimportplugin.MyBundle
 import com.intellij.openapi.project.Project
-import org.jetbrains.plugins.template.MyBundle
 
 class MyProjectService(project: Project) {
 

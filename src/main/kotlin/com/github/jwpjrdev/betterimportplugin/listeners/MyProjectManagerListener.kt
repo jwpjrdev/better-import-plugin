@@ -1,9 +1,9 @@
-package org.jetbrains.plugins.template.listeners
+package com.github.jwpjrdev.betterimportplugin.listeners
 
+import com.github.jwpjrdev.betterimportplugin.services.MyProjectService
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
-import org.jetbrains.plugins.template.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 
