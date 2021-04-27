@@ -1,6 +1,7 @@
 package com.github.jwpjrdev.betterimportplugin
 
 import com.intellij.psi.PsiFile
+import com.intellij.psi.PsiJavaFile
 import lombok.Getter
 
 @Getter
@@ -10,6 +11,7 @@ enum class Language(vararg extensions: String) {
     // Good 'ol JVM
     JAVA("java") {
         override fun getImports(file: PsiFile): List<String> {
+            var javaFile = file as PsiJavaFile
             return listOf("")
         }
     },
