@@ -6,14 +6,13 @@
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.jwpjrdev.betterimportplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.jwpjrdev.betterimportplugin.services.MyProjectService"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="com.github.jwpjrdev.betterimportplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="com.github.jwpjrdev.betterimportplugin.actions.ImportAction"
+                class="com.github.jwpjrdev.betterimportplugin.actions.ImportAction" text="Better Import"
+                description="Triggered when the import hotkey is ran. If you wish to use shift+meta+O don't forget to remove any other keybinds that use it.">
+            <keyboard-shortcut keymap="$default" first-keystroke="shift meta O"/>
+        </action>
+    </actions>
 </idea-plugin>
