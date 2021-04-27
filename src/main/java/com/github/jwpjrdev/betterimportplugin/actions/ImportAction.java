@@ -1,5 +1,12 @@
 package com.github.jwpjrdev.betterimportplugin.actions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
+
+import com.github.jwpjrdev.betterimportplugin.Language;
 import com.github.jwpjrdev.betterimportplugin.MyBundle;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -10,10 +17,6 @@ import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class ImportAction extends AnAction {
     
@@ -58,20 +61,27 @@ public class ImportAction extends AnAction {
             return;
         }
     
-        switch (fileExtension) {
-            case "java": // Java
-                // get available libraries & filter classes via Library
-                // editor.getDocument().insertString();
-                // search document.getText() [perhaps with a range] to find the last line starting with import. create a new line after it and add the new import.
-                break;
-            // TODO: support these languages (and perhaps some non-JVM languages like PHP and JS/TS)
-            case "kt": // Kotlin
-            case "scala": // Scala
-            case "groovy": // Groovy
-            case "clj": // Clojure
-            default:
-                return;
+        Language language = Language.getLanguageByExtension(fileExtension);
+        
+        // TODO: make sure to order them by the IDE's import settings
+        List<String> imports = new ArrayList<>();
+        
+        if (language != null) {
+            switch (language) {
+                case JAVA:
+                
+            }
+        } else {
+            return;
         }
+        
+//        switch (fileExtension) {
+//            case "java": // Java
+//                // get available libraries & filter classes via Library
+//                // editor.getDocument().insertString();
+//                // search document.getText() [perhaps with a range] to find the last line starting with import. create a new line after it and add the new import.
+//                break;
+//        }
         
         // TODO: convert this to a list of popups and display them one after another
         //       alternatively have one paginated popup
