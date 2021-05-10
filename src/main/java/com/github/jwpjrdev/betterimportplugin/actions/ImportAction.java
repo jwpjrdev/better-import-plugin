@@ -18,6 +18,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.popup.JBPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 
+// PsiJavaCodeReferenceElement:AnAction
 public class ImportAction extends AnAction {
     
     /**
@@ -31,11 +32,18 @@ public class ImportAction extends AnAction {
      *
      * @param event Event related to this action
      */
-    @Override
+    // TODO: handle static importing
+    // PsiJavaCodeReferenceElement:Override
+    @Override // PsiJavaCodeReferenceElement:NotNull - check for PsiJavaToken:AT/PsiAnnotation to filter out non-annotations
+    // PsiJavaCodeReferenceElement:AnActionEvent
     public void actionPerformed(@NotNull AnActionEvent event) {
         // TODO: check whether they're 1) in a project and are 2) in a Java file
         // TODO: perhaps support other JVM languages in the future
+        // PsiJavaCodeReferenceElement:Project
         final Project project = event.getProject();
+        // PsiJavaCodeReferenceElement:Editor
+        // PsiReferenceExpression:CommonDataKeys - if it's an enum, 1) filter out non-enums and 2) filter out enums that don't have that value
+        // Turns out that PsiReferenceExpression applies to variables as well, make sure to check that.
         final Editor editor = event.getData(CommonDataKeys.EDITOR);
         
         if (project == null || editor == null) {
@@ -44,6 +52,7 @@ public class ImportAction extends AnAction {
         }
         
         // no null check for the document because it can't be null
+        // PsiJavaCodeReferenceElement:Document
         final Document document = editor.getDocument();
     
         if (!document.isWritable()) {
@@ -61,13 +70,18 @@ public class ImportAction extends AnAction {
             return;
         }
     
+        // PsiJavaCodeReferenceElement:Language
+        // PsiReferenceExpression:Language
         Language language = Language.getLanguageByExtension(fileExtension);
         
         // TODO: make sure to order them by the IDE's import settings
+        // PsiJavaCodeReferenceElement:List<String>
+        // PsiJavaCodeReferenceElement:ArrayList<>
         List<String> imports = new ArrayList<>();
         
         if (language != null) {
             switch (language) {
+                // PsiReferenceExpression:JAVA
                 case JAVA:
                 
             }
