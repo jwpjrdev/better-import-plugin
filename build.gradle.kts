@@ -19,7 +19,7 @@ plugins {
     // ktlint linter - read more: https://github.com/JLLeitschuh/ktlint-gradle
     id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
     // Lombok :D
-    id("io.freefair.lombok") version "6.1.0-m1"
+    id("io.freefair.lombok") version "6.1.0-m3"
 }
 
 group = properties("pluginGroup")
